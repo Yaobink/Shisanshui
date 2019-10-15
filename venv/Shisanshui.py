@@ -1,3 +1,6 @@
+import requests
+import json
+import http
 class node:
     flower=0 #1234
     num=0  # 234567891011121314, A14
@@ -39,8 +42,9 @@ for i in range(0,4+1):
 global cnt,r1,r2,r3,end_ans,score # 计数器
 cnt,r1,r2,r3=0,5,5,3
 end_ans ,score= 0.0,0.0
-global e1, e2, e3;
-global a1, a2, a3;
+global e1, e2, e3
+global a1, a2, a3
+global token,id,use
 
 hua,number={},{}
 for i in range(0,15+1):
@@ -104,32 +108,38 @@ def first():#前墩
     for i in range(1,4+1):
         if hua[i] == 3:
             if shunzi3(ans_3[1].num) == 1:
-                score += (9.0+0.9 / 11.0 * (ans_3[1].num - 1))
-                return 10 # 3张同花顺
+                k=(9.0+0.9 / 11.0 * (ans_3[1].num - 1))
+                score += k
+                return k # 3张同花顺
     x = 1
     for i in range(1,4+1):
         if hua[i] == 3:
-            score += (6.0 +0.9/(1300+130+13)*((ans_3[3].num-1)*100+(ans_3[2].num-1)*10+(ans_3[1].num-1))*1.0 )
-            return 7 #3张同花
+            k=(6.0 +0.9/(1300+130+13)*((ans_3[3].num-1)*100+(ans_3[2].num-1)*10+(ans_3[1].num-1))*1.0 )
+            score += k
+            return k #3张同花
     x = 1
     if shunzi3(ans_3[1].num) == 1:
-        score += (5.0  + 0.9/11.0*(ans_3[1].num-1)*1.0)
-        return 6 #3张顺子
+        k=(5.0  + 0.9/11.0*(ans_3[1].num-1)*1.0)
+        score += k
+        return k #3张顺子
     x = 1
     for i in range(3,0,-1):
         if number[ans_3[i].num] == 3:
-            score += (4.0+0.9/13.0*(ans_3[1].num - 1)*1.0)
-            return 5#三条
+            k=(4.0+0.9/13.0*(ans_3[1].num - 1)*1.0)
+            score += k
+            return k#三条
     x = 1
     for i in range(3,0,-1):
         if number[ans_3[i].num] == 1:
             x = ans_3[i].num
         if number[ans_3[i].num] == 2:
-            score += (1.0 + 0.9/(130+13)*((ans_3[i].num - 1)*10+x-1)*1.0)
-            return 2#单对
+            k=(1.0 + 0.9/(130+13)*((ans_3[i].num - 1)*10+x-1)*1.0)
+            score += k
+            return k#单对
     x = 1
-    score += 0.9 / (1300.0 + 130.0 + 13.0)*((ans_3[3].num - 1) * 100 + (ans_3[2].num - 1) * 10 + (ans_3[1].num - 1))
-    return 1 #散牌
+    k=0.9 / (1300.0 + 130.0 + 13.0)*((ans_3[3].num - 1) * 100 + (ans_3[2].num - 1) * 10 + (ans_3[1].num - 1))
+    score += k
+    return k #散牌
 
 def second():
     global score
@@ -151,16 +161,18 @@ def second():
     for i in range(1,4+1):
         if hua[i] == 5:
             if shunzi5(ans_2[1].num) == 1:
-                score += (9.0 + 0.9 / 9 * (ans_2[1].num - 1)) * 1.0 # 14 13 12 11 10
-                return 10 # 同花顺
+                k= (9.0 + 0.9 / 9 * (ans_2[1].num - 1)) * 1.0
+                score += k# 14 13 12 11 10
+                return k # 同花顺
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_2[i].num] == 1:
             x = ans_2[i].num
         if number[ans_2[i].num] == 4:
-            score += (8.0+ 0.9/(130+13)*((ans_2[i].num - 1)*10))*1.0
-            return 9#炸弹
+            k=(8.0+ 0.9/(130+13)*((ans_2[i].num - 1)*10))*1.0
+            score += k
+            return k#炸弹
 
     x = 1
     for i in range(5,0,-1):
@@ -168,18 +180,21 @@ def second():
             x = ans_2[i].num
             for j in range(5,0,-1):
                 if number[ans_2[j].num] == 2:
-                    score += (7.0 + 0.9 / (130 + 13)*((x - 1) * 10 + ans_2[j].num - 1))*1.0
-                    return 8#葫芦
+                    k=(7.0 + 0.9 / (130 + 13)*((x - 1) * 10 + ans_2[j].num - 1))*1.0
+                    score += k
+                    return k#葫芦
     x = 1
     for i in range(1,4+1):
         if hua[i] == 5:
-            score +=(6.0 + 0.9 / (130000 + 13000 + 1300+130+13)*((ans_2[5].num-1)*10000+(ans_2[4].num - 1)*1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + (ans_2[1].num - 1)))*1.0
-            return 7#同花
+            k=(6.0 + 0.9 / (130000 + 13000 + 1300+130+13)*((ans_2[5].num-1)*10000+(ans_2[4].num - 1)*1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + (ans_2[1].num - 1)))*1.0
+            score +=k
+            return k#同花
 
     x = 1
     if shunzi5(ans_2[1].num) == 1 :
-        score += (5.0 + 0.9/9*(ans_2[1].num - 1)*1.0)
-        return 6#5张顺子
+        k=(5.0 + 0.9/9*(ans_2[1].num - 1)*1.0)
+        score += k
+        return k#5张顺子
 
     x = 1
     for i in range(5,0,-1):
@@ -187,34 +202,40 @@ def second():
             x = ans_2[i].num
             for j in range(5,0,-1):
                 if number[ans_2[j].num] == 1:
-                    score += (4.0 + 0.9 / (1300+130+13) * ((x-1) * 100))
-                    return 5# 三条
+                    k=(4.0 + 0.9 / (1300+130+13) * ((x-1) * 100))
+                    score += k
+                    return k# 三条
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_2[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_2[i].num != ans_2[j].num) and number[ans_2[j].num] == 2 and abs(ans_2[i].num - ans_2[j].num) == 1 :
-                    score += (3.0+ 0.9 / 10 * (ans_2[j].num-1-1)) * 1.0
-                    return 4# 连对2对
+                    k=(3.0+ 0.9 / 10 * (ans_2[j].num-1-1)) * 1.0
+                    score += k
+                    return k# 连对2对
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_2[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_2[i].num != ans_2[j].num) and number[ans_2[j].num] == 2 :
-                    score += (2.0 +0.9 / (130+13) * ((ans_2[i].num - 1) * 10+ans_2[j].num-1)) * 1.0
-                    return 3 # 普通2对
+                    k=(2.0 +0.9 / (130+13) * ((ans_2[i].num - 1) * 10+ans_2[j].num-1)) * 1.0
+                    score += k
+                    return k # 普通2对
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_2[i].num] == 1:
             x = ans_2[i].num
         if number[ans_2[i].num] == 2:
-            score += (1.0+0.9/(130+13)*((ans_2[i].num-1)*10+x-1))*1.0
-            return 2#单对+3张散
-    score += (0.9 / (130000 + 13000 + 1300 + 130 + 13)*((ans_2[5].num - 1) * 10000 + (ans_2[4].num - 1) * 1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + ans_2[1].num - 1))*1.0
-    return 1
+            k=(1.0+0.9/(130+13)*((ans_2[i].num-1)*10+x-1))*1.0
+            score += k
+            return k #单对+3张散
+
+    k= (0.9 / (130000 + 13000 + 1300 + 130 + 13)*((ans_2[5].num - 1) * 10000 + (ans_2[4].num - 1) * 1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + ans_2[1].num - 1))*1.0
+    score +=k
+    return k
 
 def third():
     global score
@@ -236,16 +257,18 @@ def third():
     for i in range(1,4+1):
         if hua[i] == 5:
             if shunzi5(ans_1[1].num) == 1:
-                score += (9.0 + 0.9 / 9 * (ans_1[1].num - 1)) * 1.0 # 14 13 12 11 10
-                return 10 # 同花顺
+                k=(9.0 + 0.9 / 9 * (ans_1[1].num - 1)) * 1.0 # 14 13 12 11 10
+                score += k
+                return k # 同花顺
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_1[i].num] == 1:
             x = ans_1[i].num
         if number[ans_1[i].num] == 4:
-            score += (8.0+ 0.9/(130+13)*((ans_1[i].num - 1)*10))*1.0
-            return 9#炸弹
+            k=(8.0+ 0.9/(130+13)*((ans_1[i].num - 1)*10))*1.0
+            score += k
+            return k#炸弹
 
     x = 1
     for i in range(5,0,-1):
@@ -253,18 +276,21 @@ def third():
             x = ans_1[i].num
             for j in range(5,0,-1):
                 if number[ans_1[j].num] == 2:
-                    score += (7.0 + 0.9 / (130 + 13)*((x - 1) * 10 + ans_1[j].num - 1))*1.0
-                    return 8#葫芦
+                    k=(7.0 + 0.9 / (130 + 13)*((x - 1) * 10 + ans_1[j].num - 1))*1.0
+                    score += k
+                    return k#葫芦
     x = 1
     for i in range(1,4+1):
         if hua[i] == 5:
-            score +=(6.0 + 0.9 / (130000 + 13000 + 1300+130+13)*((ans_1[5].num-1)*10000+(ans_1[4].num - 1)*1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + (ans_1[1].num - 1)))*1.0
-            return 7#同花
+            k=(6.0 + 0.9 / (130000 + 13000 + 1300+130+13)*((ans_1[5].num-1)*10000+(ans_1[4].num - 1)*1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + (ans_1[1].num - 1)))*1.0
+            score +=k
+            return k #同花
 
     x = 1
     if shunzi5(ans_1[1].num) == 1 :
-        score += (5.0 + 0.9/9*(ans_1[1].num - 1)*1.0)
-        return 6#5张顺子
+        k=(5.0 + 0.9/9*(ans_1[1].num - 1)*1.0)
+        score += k
+        return k#5张顺子
 
     x = 1
     for i in range(5,0,-1):
@@ -272,34 +298,40 @@ def third():
             x = ans_1[i].num
             for j in range(5,0,-1):
                 if number[ans_1[j].num] == 1:
-                    score += (4.0 + 0.9 / (1300+130+13) * ((x-1) * 100))
-                    return 5# 三条
+                    k=(4.0 + 0.9 / (1300+130+13) * ((x-1) * 100))
+                    score += k
+                    return k# 三条
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_1[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_1[i].num != ans_1[j].num) and number[ans_1[j].num] == 2 and abs(ans_1[i].num - ans_1[j].num) == 1 :
-                    score += (3.0+ 0.9 / 10 * (ans_1[j].num-1-1)) * 1.0
-                    return 4# 连对2对
+                    k= (3.0+ 0.9 / 10 * (ans_1[j].num-1-1)) * 1.0
+                    score +=k
+                    return k # 连对2对
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_1[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_1[i].num != ans_1[j].num) and number[ans_1[j].num] == 2 :
-                    score += (2.0 +0.9 / (130+13) * ((ans_1[i].num - 1) * 10+ans_1[j].num-1)) * 1.0
-                    return 3 # 普通2对
+                    k=(2.0 +0.9 / (130+13) * ((ans_1[i].num - 1) * 10+ans_1[j].num-1)) * 1.0
+                    score += k
+                    return k # 普通2对
 
     x = 1
     for i in range(5,0,-1):
         if number[ans_1[i].num] == 1:
             x = ans_1[i].num
         if number[ans_1[i].num] == 2:
-            score += (1.0+0.9/(130+13)*((ans_1[i].num-1)*10+x-1))*1.0
-            return 2#单对+3张散
-    score += (0.9 / (130000 + 13000 + 1300 + 130 + 13)*((ans_1[5].num - 1) * 10000 + (ans_1[4].num - 1) * 1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + ans_1[1].num - 1))*1.0
-    return 1
+            k=(1.0+0.9/(130+13)*((ans_1[i].num-1)*10+x-1))*1.0
+            score += k
+            return k #单对+3张散
+
+    k=(0.9 / (130000 + 13000 + 1300 + 130 + 13)*((ans_1[5].num - 1) * 10000 + (ans_1[4].num - 1) * 1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + ans_1[1].num - 1))*1.0
+    score += k
+    return  k
 
 
 def tempof() :
@@ -390,43 +422,182 @@ def hua_to_number(x):
     if x == "*":
         return 4
 
+def change(x):
+    if x==10:
+        return "10"
+    if x==11:
+        return "J"
+    if x==12:
+        return "Q"
+    if x==13:
+        return "K"
+    if x==14:
+        return "A"
+    return str(x)
+
+
+
+def rank():
+    url = "https://api.shisanshui.rtxux.xyz/rank"
+    response = requests.get(url)
+    print(response.text)
+
+def history(limit,page):
+    global use
+    url = 'https://api.shisanshui.rtxux.xyz/history'
+    headers = {"X-Auth-Token":token}
+    params={
+        "player_id":use,
+        "limit":limit,
+        "page":page
+    }
+
+    response=requests.get(url,params=params,headers=headers)
+    print(response.text)
+
+def history_detail():
+    global id
+    id2=str(id)
+    url = "https://api.shisanshui.rtxux.xyz/history/{id}"
+    params = {"id": id}
+    headers = {"X-Auth-Token": token}
+    response = requests.get(url,params=params,headers=headers)
+    print(response)
+
+
+def opengame():
+    global token,id
+    url = "https://api.shisanshui.rtxux.xyz/game/open"
+    headers = {"X-Auth-Token": token}
+    response = requests.post(url, headers=headers)
+    message=response.json()
+    id=message["data"]["id"]
+    card=message["data"]["card"]
+    print(response.text)
+    return card
+
+def submitgame(submit_ans):
+    global token, id
+    url = "https://api.shisanshui.rtxux.xyz/game/submit"
+    headers = {"content-type": "application/json"}
+    headers["X-Auth-Token"] = token
+    data={}
+    data={"id":id}
+    data["card"]=submit_ans
+    response=requests.post(url,data=json.dumps(data),headers=headers)
+    print(response.text)
+
+
+def logout():
+    global token
+    url = "https://api.shisanshui.rtxux.xyz/auth/logout"
+    headers = {"X-Auth-Token":token}
+    response = requests.post(url,headers=headers)
+    print(response.text)
+
+def login_check():
+    global token
+    url = "https://api.shisanshui.rtxux.xyz/auth/validate"
+    headers = {"X-Auth-Token": token}
+    response = requests.get(url,headers=headers)
+    print(response.text)
+
+
+def login(usename,password):
+    global token,use
+    url = "https://api.shisanshui.rtxux.xyz/auth/login"
+    payload = "{\"username\":"+"\""+usename+"\""+","+"\"password\":"+"\""+password+"\""+"}"
+    headers = {'content-type': 'application/json'}
+    response = requests.post(url, data=payload, headers=headers)
+    message = response.json()  # 登录
+    token = message["data"]["token"]
+    use=message["data"]["user_id"]
+    print (response.text)
+#139 dzy001 dzy001
+#143 dzy002 dzy002
+
+def registered(usename,password):
+    url = "https://api.shisanshui.rtxux.xyz/auth/register"
+    payload = "{\"username\":"+"\""+usename+"\""+","+"\"password\":"+"\""+password+"\""+"}"
+    headers = {'content-type': 'application/json'}
+    response = requests.post(url, data=payload, headers=headers)
+    print(response.text)
+
+
+def read_opengame():#读入
+
+    str0 = opengame()#开始牌局
+    # print(str0)
+
+    str1 = str0.replace("10", "T")
+    dex = 0
+    for i in range(0, 39, 3):
+        if str1[i + 1] == "T":
+            x = node(hua_to_number(str1[i]), 10)
+        elif str1[i + 1] == "J":
+            x = node(hua_to_number(str1[i]), 11)
+        elif str1[i + 1] == "Q":
+            x = node(hua_to_number(str1[i]), 12)
+        elif str1[i + 1] == "K":
+            x = node(hua_to_number(str1[i]), 13)
+        elif str1[i + 1] == "A":
+            x = node(hua_to_number(str1[i]), 14)
+        else:
+            x = node(hua_to_number(str1[i]), int(str1[i + 1]))
+        dex += 1
+        poker_1[dex] = x
+
+def printf_ans():#输出
+    submit_ans=[]
+    s=""
+    for i in range(1, 3 + 1):  # 前墩
+        if i!=3:
+            s+=number_to_hua(end_3[i].flower)+change(end_3[i].num)+" "
+        else:
+            s+=number_to_hua(end_3[i].flower)+change(end_3[i].num)
+
+    submit_ans.append(s)
+    print(s)
+    s=""
+    for i in range(1, 5 + 1):  # 中墩
+        if i != 5:
+            s += number_to_hua(end_2[i].flower) + change(end_2[i].num) + " "
+        else:
+            s += number_to_hua(end_2[i].flower) + change(end_2[i].num)
+    submit_ans.append(s)
+    print(s)
+    s = ""
+    for i in range(1, 5 + 1):
+        if i != 5:
+            s += number_to_hua(end_1[i].flower) + change(end_1[i].num) + " "
+        else:
+            s += number_to_hua(end_1[i].flower) + change(end_1[i].num)
+    submit_ans.append(s)
+    print(s)
+    return submit_ans
+
+
 #主函数
 
-str0 = input()
-str1=str0.replace("10","T")
-dex=0
-for i in range(0,39,3) :
-    if str1[i + 1] == "T":
-        x = node(hua_to_number(str1[i]), 10)
-    elif str1[i + 1] == "J":
-        x = node(hua_to_number(str1[i]), 11)
-    elif str1[i + 1] == "Q":
-        x = node(hua_to_number(str1[i]), 12)
-    elif str1[i + 1] == "K":
-        x = node(hua_to_number(str1[i]), 13)
-    elif str1[i + 1] == "A":
-        x = node(hua_to_number(str1[i]), 14)
-    else:
-        x = node(hua_to_number(str1[i]), int(str1[i + 1]))
-    dex+=1
-    poker_1[dex]=x
 
-dfs_1(1, 1)
-print(cnt)
-print("答案:")
-for i in range(1,3+1):#前墩
-    print(end_3[i].num,end=" ")
-print("\n")
-for i in range(1,5+1):# 中墩
-    print(end_2[i].num,end=" ")
-print("\n")
-for i in range(1,5+1):
-    print(end_1[i].num,end=" ")
-print("\n")
+usename=input()
+password=input()
+registered(usename,password)#注册
+login(usename,password)#登录
+login_check()#验证
 
-print("权值:",end_ans)
+read_opengame()#开启牌局，读入
+dfs_1(1, 1)#解决问题，深搜
+submit_ans=printf_ans()
+print(submit_ans)
+submitgame(submit_ans)#提交牌局
 
-#cout << a1 << " " << a2 << " " << a3 << endl;78i
+rank()
+history(3,1)#历史记录
+history_detail()#记录详情
+logout()  # 注销
+#print("权值:",end_ans)
+
 
 
 
