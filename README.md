@@ -3,10 +3,10 @@
 [![](https://img.shields.io/badge/code%20quality-A-green)](https://app.codacy.com/manual/Yaobink/Shisanshui/dashboard?bid=14710957)
 
 - 运行环境
-windows
+windows.
 
 - 编译方法
-python
+python.
 
 - 使用方法
-直接下载文件，执行.py文件
+直接下载文件，执行.py文件.
