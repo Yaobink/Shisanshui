@@ -4,7 +4,7 @@ import json
 import 后端 as shisanshui
 import sys
 
-shisanshui.login("dzy007","dzy007")
+shisanshui.login("","")
 while 1:
     try:
         timestart = time.clock()
