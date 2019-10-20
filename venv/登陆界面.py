@@ -82,9 +82,9 @@ def rank():
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((881, 468), 0, 32)  # 创建界面，设置窗口大小
 
-    background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\排行榜背景.png")  # 获取背景图片位置
+    background = pygame.image.load(r"素材\排行榜背景.png")  # 获取背景图片位置
 
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")#获取鼠标素材位置
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")#获取鼠标素材位置
     mouse_cursor=pygame.transform.scale(mouse_old, (10, 10))#缩放鼠标图片
 
     name1  ="hanhan"
@@ -141,8 +141,8 @@ def history():
     pygame.init()
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((881, 468), 0, 32)  # 创建界面，设置窗口大小
-    background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\历史游戏背景.png")  # 获取背景图片位置
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")#获取鼠标素材位置
+    background = pygame.image.load(r"素材\历史游戏背景.png")  # 获取背景图片位置
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")#获取鼠标素材位置
     mouse_cursor=pygame.transform.scale(mouse_old, (10, 10))#缩放鼠标图片
     message=shisanshui.history(3,1)
     print(message)
@@ -203,9 +203,9 @@ def restart():
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((881, 468), 0, 32)  # 创建界面，设置窗口大小
 
-    background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\重新开局.png")  # 获取背景图片位置
+    background = pygame.image.load(r"素材\重新开局.png")  # 获取背景图片位置
 
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")#获取鼠标素材位置
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")#获取鼠标素材位置
     mouse_cursor=pygame.transform.scale(mouse_old, (10, 10))#缩放鼠标图片
 
 
@@ -235,7 +235,7 @@ def tijiao():
 
 def change(flower,num):
     x=(flower-0)*4+(num-2)
-    str0='C:/Users/18605/Desktop/素材/素材/Resources/'
+    str0='素材/Resources/'
     str0+=str(x)+'.png'
     return str0
 
@@ -245,8 +245,8 @@ def choosecard():
     pygame.init()
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((881, 468), 0, 32)  # 创建界面，设置窗口大小
-    background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\智能出牌.png")  # 获取背景图片位置
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")  # 获取鼠标素材位置
+    background = pygame.image.load(r"素材\智能出牌.png")  # 获取背景图片位置
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")  # 获取鼠标素材位置
     mouse_cursor = pygame.transform.scale(mouse_old, (10, 10))  # 缩放鼠标图片
 
     for i in range(1,3+1):
@@ -312,8 +312,8 @@ def opencard():
     pygame.init()
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((881, 468), 0, 32)  # 创建界面，设置窗口大小
-    background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\发牌中.png")  # 获取背景图片位置
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")#获取鼠标素材位置
+    background = pygame.image.load(r"素材\发牌中.png")  # 获取背景图片位置
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")#获取鼠标素材位置
 
 
 
@@ -340,8 +340,8 @@ def open():#开始牌局
     pygame.init()
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((881, 468), 0, 32)  # 创建界面，设置窗口大小
-    background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\开始牌局.png")  # 获取背景图片位置
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")#获取鼠标素材位置
+    background = pygame.image.load(r"素材\开始牌局.png")  # 获取背景图片位置
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")#获取鼠标素材位置
     mouse_cursor=pygame.transform.scale(mouse_old, (10, 10))#缩放鼠标图片
     while True:# 游戏主循环
 
@@ -374,13 +374,13 @@ def login_use():#用户界面
     pygame.init()
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((881, 468), 0, 32)  # 创建界面，设置窗口大小
-    menu_background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单背景.png")  # 主菜单界面
-    menu_button_jryx = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单进入游戏按钮.png").convert_alpha()
-    menu_button_cjfj = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单创建房间按钮.png").convert_alpha()
-    menu_button_lsyx = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单历史游戏按钮.png").convert_alpha()
-    menu_button_phb = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单排行榜按钮.png").convert_alpha()
-    menu_button_exit = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单退出登录按钮.png").convert_alpha()
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")#获取鼠标素材位置
+    menu_background = pygame.image.load(r"素材\主菜单背景.png")  # 主菜单界面
+    menu_button_jryx = pygame.image.load(r"素材\主菜单进入游戏按钮.png").convert_alpha()
+    menu_button_cjfj = pygame.image.load(r"素材\主菜单创建房间按钮.png").convert_alpha()
+    menu_button_lsyx = pygame.image.load(r"素材\主菜单历史游戏按钮.png").convert_alpha()
+    menu_button_phb = pygame.image.load(r"素材\主菜单排行榜按钮.png").convert_alpha()
+    menu_button_exit = pygame.image.load(r"素材\主菜单退出登录按钮.png").convert_alpha()
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")#获取鼠标素材位置
     mouse_cursor=pygame.transform.scale(mouse_old, (10, 10))#缩放鼠标图片
     text = str(user_id)
 
@@ -403,17 +403,17 @@ def login_use():#用户界面
             if event.type == pygame.QUIT:# 如果关闭，退出
                 exit()
             if 396 < y < 396 + 72 and 17 < x < 17 + 158:
-                menu_button_lsyx = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单历史游戏按钮半透明.png")
+                menu_button_lsyx = pygame.image.load(r"素材\主菜单历史游戏按钮半透明.png")
             else:
-                menu_button_lsyx = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单历史游戏按钮.png")
+                menu_button_lsyx = pygame.image.load(r"素材\主菜单历史游戏按钮.png")
             if 396 < y < 396 + 72 and 181 < x < 181 + 158:
-                menu_button_phb = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单排行榜按钮半透明.png")
+                menu_button_phb = pygame.image.load(r"素材\主菜单排行榜按钮半透明.png")
             else:
-                menu_button_phb = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单排行榜按钮.png")
+                menu_button_phb = pygame.image.load(r"素材\主菜单排行榜按钮.png")
             if 109 < y < 109 + 251 and 135 < x < 135 + 162:
-                menu_button_jryx = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单进入游戏按钮变大.png")
+                menu_button_jryx = pygame.image.load(r"素材\主菜单进入游戏按钮变大.png")
             else:
-                menu_button_jryx = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\主菜单进入游戏按钮.png")
+                menu_button_jryx = pygame.image.load(r"素材\主菜单进入游戏按钮.png")
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()  # 获得鼠标位置
@@ -432,14 +432,14 @@ def login():
     pygame.init()
     pygame.display.set_caption("柯老板的十三水!")
     screen = pygame.display.set_mode((878, 465), 0, 32)  # 创建界面，设置窗口大小
-    login_background = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\登录背景.png")  # 登录界面
-    mouse_old = pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\鼠标箭头.png")#获取鼠标素材位置
+    login_background = pygame.image.load(r"素材\登录背景.png")  # 登录界面
+    mouse_old = pygame.image.load(r"素材\鼠标箭头.png")#获取鼠标素材位置
     mouse_cursor=pygame.transform.scale(mouse_old, (10, 10))#缩放图片
     flag1=0
     flag2=0
-    textbox1=TextBox(259,45,361,137,pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\输入框.png"), callback=callback)
-    textbox2=TextBox(259,45,361,199,pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\输入框.png"), callback=callback)
-    textbox2fake=TextBox(259,45,361,199,pygame.image.load(r"C:\Users\18605\Desktop\素材\素材\输入框.png"), callback=callback)
+    textbox1=TextBox(259,45,361,137,pygame.image.load(r"素材\输入框.png"), callback=callback)
+    textbox2=TextBox(259,45,361,199,pygame.image.load(r"素材\输入框.png"), callback=callback)
+    textbox2fake=TextBox(259,45,361,199,pygame.image.load(r"素材\输入框.png"), callback=callback)
     while True:# 游戏主循环
 
         screen.blit(login_background, (0, 0))#画入登录界面
