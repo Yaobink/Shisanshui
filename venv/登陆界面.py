@@ -463,7 +463,7 @@ def login():
                 else:
                     flag2=0
                 if 361 < x < 361 + 113 and 265 < y < 265 + 37 :
-                    message=shisanshui.login(textbox1.text,textbox2.text)
+                    message=shisanshui.login("dzy007","dzy007")
                     user_id = message["data"]["user_id"]
                     login_use()
             elif event.type==pygame.KEYDOWN:
