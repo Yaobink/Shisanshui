@@ -1,6 +1,6 @@
 import requests
 import json
-import time
+
 class node:
     flower=0 #1234
     num=0  # 234567891011121314, A14
@@ -111,24 +111,24 @@ def first():#前墩
     for i in range(1,4+1):
         if hua[i] == 3:
             if shunzi3(ans_3[1].num) == 1:
-                k=(120.0+1.0 / 11.0 * (ans_3[1].num - 1))
+                k=(9.0+0.9 / 11.0 * (ans_3[1].num - 1))
                 score += k
                 return k # 3张同花顺
     x = 1
     for i in range(1,4+1):
         if hua[i] == 3:
-            k=(70.0 +1.0/(1300+130+13)*((ans_3[3].num-1)*100+(ans_3[2].num-1)*10+(ans_3[1].num-1))*1.0 )
+            k=(6.0 +0.9/(1300+130+13)*((ans_3[3].num-1)*100+(ans_3[2].num-1)*10+(ans_3[1].num-1))*1.0 )
             score += k
             return k #3张同花
     x = 1
     if shunzi3(ans_3[1].num) == 1:
-        k=(60.0  + 1.0/11.0*(ans_3[1].num-1)*1.0)
+        k=(5.0  + 0.9/11.0*(ans_3[1].num-1)*1.0)
         score += k
         return k #3张顺子
     x = 1
     for i in range(3,0,-1):
         if number[ans_3[i].num] == 3:
-            k=(50.0+1.0/13.0*(ans_3[1].num - 1)*1.0)
+            k=(4.0+0.9/13.0*(ans_3[1].num - 1)*1.0)
             score += k
             return k#三条
     x = 1
@@ -136,11 +136,11 @@ def first():#前墩
         if number[ans_3[i].num] == 1:
             x = ans_3[i].num
         if number[ans_3[i].num] == 2:
-            k=(20.0+ 1.0/(130+13)*((ans_3[i].num - 1)*10+x-1)*1.0)
+            k=(1.0 + 0.9/(130+13)*((ans_3[i].num - 1)*10+x-1)*1.0)
             score += k
             return k#单对
     x = 1
-    k=10.0+1.0 / (1300.0 + 130.0 + 13.0)*((ans_3[3].num - 1) * 100 + (ans_3[2].num - 1) * 10 + (ans_3[1].num - 1))
+    k=0.9 / (1300.0 + 130.0 + 13.0)*((ans_3[3].num - 1) * 100 + (ans_3[2].num - 1) * 10 + (ans_3[1].num - 1))
     score += k
     return k #散牌
 
@@ -164,7 +164,7 @@ def second():
     for i in range(1,4+1):
         if hua[i] == 5:
             if shunzi5(ans_2[1].num) == 1:
-                k= (150.0 + 1.0 / 9 * (ans_2[1].num - 1)) * 1.0
+                k= (9.0 + 0.9 / 9 * (ans_2[1].num - 1)) * 1.0
                 score += k# 14 13 12 11 10
                 return k # 同花顺
 
@@ -173,7 +173,7 @@ def second():
         if number[ans_2[i].num] == 1:
             x = ans_2[i].num
         if number[ans_2[i].num] == 4:
-            k=(120.0+ 1.0/(130+13)*((ans_2[i].num - 1)*10))*1.0
+            k=(8.0+ 0.9/(130+13)*((ans_2[i].num - 1)*10))*1.0
             score += k
             return k#炸弹
 
@@ -183,19 +183,19 @@ def second():
             x = ans_2[i].num
             for j in range(5,0,-1):
                 if number[ans_2[j].num] == 2:
-                    k=(90.0 + 1.0 / (130 + 13)*((x - 1) * 10 + ans_2[j].num - 1))*1.0
+                    k=(7.0 + 0.9 / (130 + 13)*((x - 1) * 10 + ans_2[j].num - 1))*1.0
                     score += k
                     return k#葫芦
     x = 1
     for i in range(1,4+1):
         if hua[i] == 5:
-            k=(70.0 + 1.0 / (130000 + 13000 + 1300+130+13)*((ans_2[5].num-1)*10000+(ans_2[4].num - 1)*1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + (ans_2[1].num - 1)))*1.0
+            k=(6.0 + 0.9 / (130000 + 13000 + 1300+130+13)*((ans_2[5].num-1)*10000+(ans_2[4].num - 1)*1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + (ans_2[1].num - 1)))*1.0
             score +=k
             return k#同花
 
     x = 1
     if shunzi5(ans_2[1].num) == 1 :
-        k=(60.0 + 1.0/9*(ans_2[1].num - 1)*1.0)
+        k=(5.0 + 0.9/9*(ans_2[1].num - 1)*1.0)
         score += k
         return k#5张顺子
 
@@ -205,7 +205,7 @@ def second():
             x = ans_2[i].num
             for j in range(5,0,-1):
                 if number[ans_2[j].num] == 1:
-                    k=(50.0 + 1.0 / (1300+130+13) * ((x-1) * 100))
+                    k=(4.0 + 0.9 / (1300+130+13) * ((x-1) * 100))
                     score += k
                     return k# 三条
 
@@ -214,7 +214,7 @@ def second():
         if number[ans_2[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_2[i].num != ans_2[j].num) and number[ans_2[j].num] == 2 and abs(ans_2[i].num - ans_2[j].num) == 1 :
-                    k=(40.0+ 1.0 / 10 * (ans_2[j].num-1-1)) * 1.0
+                    k=(3.0+ 0.9 / 10 * (ans_2[j].num-1-1)) * 1.0
                     score += k
                     return k# 连对2对
 
@@ -223,7 +223,7 @@ def second():
         if number[ans_2[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_2[i].num != ans_2[j].num) and number[ans_2[j].num] == 2 :
-                    k=(30.0 +1.0 / (130+13) * ((ans_2[i].num - 1) * 10+ans_2[j].num-1)) * 1.0
+                    k=(2.0 +0.9 / (130+13) * ((ans_2[i].num - 1) * 10+ans_2[j].num-1)) * 1.0
                     score += k
                     return k # 普通2对
 
@@ -232,11 +232,11 @@ def second():
         if number[ans_2[i].num] == 1:
             x = ans_2[i].num
         if number[ans_2[i].num] == 2:
-            k=(20.0+1.0/(130+13)*((ans_2[i].num-1)*10+x-1))*1.0
+            k=(1.0+0.9/(130+13)*((ans_2[i].num-1)*10+x-1))*1.0
             score += k
             return k #单对+3张散
 
-    k= (10.0+1.0 / (130000 + 13000 + 1300 + 130 + 13)*((ans_2[5].num - 1) * 10000 + (ans_2[4].num - 1) * 1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + ans_2[1].num - 1))*1.0
+    k= (0.9 / (130000 + 13000 + 1300 + 130 + 13)*((ans_2[5].num - 1) * 10000 + (ans_2[4].num - 1) * 1000 + (ans_2[3].num - 1) * 100 + (ans_2[2].num - 1) * 10 + ans_2[1].num - 1))*1.0
     score +=k
     return k
 
@@ -260,7 +260,7 @@ def third():
     for i in range(1,4+1):
         if hua[i] == 5:
             if shunzi5(ans_1[1].num) == 1:
-                k=(150.0 + 1.0 / 9 * (ans_1[1].num - 1)) * 1.0 # 14 13 12 11 10
+                k=(9.0 + 0.9 / 9 * (ans_1[1].num - 1)) * 1.0 # 14 13 12 11 10
                 score += k
                 return k # 同花顺
 
@@ -269,7 +269,7 @@ def third():
         if number[ans_1[i].num] == 1:
             x = ans_1[i].num
         if number[ans_1[i].num] == 4:
-            k=(120.0+ 1.0/(130+13)*((ans_1[i].num - 1)*10))*1.0
+            k=(8.0+ 0.9/(130+13)*((ans_1[i].num - 1)*10))*1.0
             score += k
             return k#炸弹
 
@@ -279,19 +279,19 @@ def third():
             x = ans_1[i].num
             for j in range(5,0,-1):
                 if number[ans_1[j].num] == 2:
-                    k=(90.0 + 1.0 / (130 + 13)*((x - 1) * 10 + ans_1[j].num - 1))*1.0
+                    k=(7.0 + 0.9 / (130 + 13)*((x - 1) * 10 + ans_1[j].num - 1))*1.0
                     score += k
                     return k#葫芦
     x = 1
     for i in range(1,4+1):
         if hua[i] == 5:
-            k=(70.0 + 1.0 / (130000 + 13000 + 1300+130+13)*((ans_1[5].num-1)*10000+(ans_1[4].num - 1)*1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + (ans_1[1].num - 1)))*1.0
+            k=(6.0 + 0.9 / (130000 + 13000 + 1300+130+13)*((ans_1[5].num-1)*10000+(ans_1[4].num - 1)*1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + (ans_1[1].num - 1)))*1.0
             score +=k
             return k #同花
 
     x = 1
     if shunzi5(ans_1[1].num) == 1 :
-        k=(60.0 + 1.0/9*(ans_1[1].num - 1)*1.0)
+        k=(5.0 + 0.9/9*(ans_1[1].num - 1)*1.0)
         score += k
         return k#5张顺子
 
@@ -301,7 +301,7 @@ def third():
             x = ans_1[i].num
             for j in range(5,0,-1):
                 if number[ans_1[j].num] == 1:
-                    k=(50.0 + 1.0 / (1300+130+13) * ((x-1) * 100))
+                    k=(4.0 + 0.9 / (1300+130+13) * ((x-1) * 100))
                     score += k
                     return k# 三条
 
@@ -310,7 +310,7 @@ def third():
         if number[ans_1[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_1[i].num != ans_1[j].num) and number[ans_1[j].num] == 2 and abs(ans_1[i].num - ans_1[j].num) == 1 :
-                    k= (40.0+ 1.0 / 10 * (ans_1[j].num-1-1)) * 1.0
+                    k= (3.0+ 0.9 / 10 * (ans_1[j].num-1-1)) * 1.0
                     score +=k
                     return k # 连对2对
 
@@ -319,7 +319,7 @@ def third():
         if number[ans_1[i].num] == 2:
             for j in range(5,0,-1):
                 if (ans_1[i].num != ans_1[j].num) and number[ans_1[j].num] == 2 :
-                    k=(30.0 +1.0 / (130+13) * ((ans_1[i].num - 1) * 10+ans_1[j].num-1)) * 1.0
+                    k=(2.0 +0.9 / (130+13) * ((ans_1[i].num - 1) * 10+ans_1[j].num-1)) * 1.0
                     score += k
                     return k # 普通2对
 
@@ -328,11 +328,11 @@ def third():
         if number[ans_1[i].num] == 1:
             x = ans_1[i].num
         if number[ans_1[i].num] == 2:
-            k=(20.0+1.0/(130+13)*((ans_1[i].num-1)*10+x-1))*1.0
+            k=(1.0+0.9/(130+13)*((ans_1[i].num-1)*10+x-1))*1.0
             score += k
             return k #单对+3张散
 
-    k=(10+1.0 / (130000 + 13000 + 1300 + 130 + 13)*((ans_1[5].num - 1) * 10000 + (ans_1[4].num - 1) * 1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + ans_1[1].num - 1))*1.0
+    k=(0.9 / (130000 + 13000 + 1300 + 130 + 13)*((ans_1[5].num - 1) * 10000 + (ans_1[4].num - 1) * 1000 + (ans_1[3].num - 1) * 100 + (ans_1[2].num - 1) * 10 + ans_1[1].num - 1))*1.0
     score += k
     return  k
 
@@ -346,7 +346,6 @@ def contrast_ans() :
     k1 = first()
     k2 = second()
     k3 = third()
-    score=k1*3.0+k2*2.0+k3*1.0
     if k1 > k2 or k2 > k3 or k1 > k3 :
         score = 0
     if score>end_ans :
@@ -398,7 +397,7 @@ def pddi():
     for i in range(1, 4 + 1):
         if hua[i] == 5:
             if shunzi5(pddun[1].num) == 1:
-                k = (150.0 + 1.0 / 9 * (pddun[1].num - 1)) * 1.0
+                k = (9.0 + 0.9 / 9 * (pddun[1].num - 1)) * 1.0
                 # score += k  # 14 13 12 11 10
                 return k  # 同花顺
 
@@ -407,7 +406,7 @@ def pddi():
         if number[pddun[i].num] == 1:
             x = pddun[i].num
         if number[pddun[i].num] == 4:
-            k = (120.0 + 1.0 / (130 + 13) * ((pddun[i].num - 1) * 10)) * 1.0
+            k = (8.0 + 0.9 / (130 + 13) * ((pddun[i].num - 1) * 10)) * 1.0
             return k  # 炸弹
 
     x = 1
@@ -416,17 +415,19 @@ def pddi():
             x = pddun[i].num
             for j in range(5, 0, -1):
                 if number[pddun[j].num] == 2:
-                    k = (90.0 + 1.0 / (130 + 13) * ((x - 1) * 10 + pddun[j].num - 1)) * 1.0
+                    k = (7.0 + 0.9 / (130 + 13) * ((x - 1) * 10 + pddun[j].num - 1)) * 1.0
                     return k  # 葫芦
     x = 1
     for i in range(1, 4 + 1):
         if hua[i] == 5:
-            k = (70.0 + 1.0 / (130000 + 13000 + 1300 + 130 + 13) * ((pddun[5].num - 1) * 10000 + (pddun[4].num - 1) * 1000 + (pddun[3].num - 1) * 100 + (pddun[2].num - 1) * 10 + (pddun[1].num - 1))) * 1.0
+            k = (6.0 + 0.9 / (130000 + 13000 + 1300 + 130 + 13) * (
+                    (pddun[5].num - 1) * 10000 + (pddun[4].num - 1) * 1000 + (pddun[3].num - 1) * 100 + (
+                    pddun[2].num - 1) * 10 + (pddun[1].num - 1))) * 1.0
             return k  # 同花
 
     x = 1
     if shunzi5(pddun[1].num) == 1:
-        k = (60.0 + 1.0 / 9 * (pddun[1].num - 1) * 1.0)
+        k = (5.0 + 0.9 / 9 * (pddun[1].num - 1) * 1.0)
         return k  # 5张顺子
 
     x = 1
@@ -435,7 +436,7 @@ def pddi():
             x = pddun[i].num
             for j in range(5, 0, -1):
                 if number[pddun[j].num] == 1:
-                    k = (50.0 + 1.0 / (1300 + 130 + 13) * ((x - 1) * 100))
+                    k = (4.0 + 0.9 / (1300 + 130 + 13) * ((x - 1) * 100))
                     return k  # 三条
 
     x = 1
@@ -444,7 +445,7 @@ def pddi():
             for j in range(5, 0, -1):
                 if (pddun[i].num != pddun[j].num) and number[pddun[j].num] == 2 and abs(
                         pddun[i].num - pddun[j].num) == 1:
-                    k = (40.0 + 1.0 / 10 * (pddun[j].num - 1 - 1)) * 1.0
+                    k = (3.0 + 0.9 / 10 * (pddun[j].num - 1 - 1)) * 1.0
                     return k  # 连对2对
 
     x = 1
@@ -452,7 +453,7 @@ def pddi():
         if number[pddun[i].num] == 2:
             for j in range(5, 0, -1):
                 if (pddun[i].num != pddun[j].num) and number[pddun[j].num] == 2:
-                    k = (30.0 + 1.0 / (130 + 13) * ((pddun[i].num - 1) * 10 + pddun[j].num - 1)) * 1.0
+                    k = (2.0 + 0.9 / (130 + 13) * ((pddun[i].num - 1) * 10 + pddun[j].num - 1)) * 1.0
                     return k  # 普通2对
 
     x = 1
@@ -460,10 +461,10 @@ def pddi():
         if number[pddun[i].num] == 1:
             x = pddun[i].num
         if number[pddun[i].num] == 2:
-            k = (20.0 + 1.0 / (130 + 13) * ((pddun[i].num - 1) * 10 + x - 1)) * 1.0
+            k = (1.0 + 0.9 / (130 + 13) * ((pddun[i].num - 1) * 10 + x - 1)) * 1.0
             return k  # 单对+3张散
 
-    k = 10.0+(1.0 / (130000 + 13000 + 1300 + 130 + 13) * ((pddun[5].num - 1) * 10000 + (pddun[4].num - 1) * 1000 + (pddun[3].num - 1) * 100 + (pddun[2].num - 1) * 10 + pddun[1].num - 1)) * 1.0
+    k = (0.9 / (130000 + 13000 + 1300 + 130 + 13) * ((pddun[5].num - 1) * 10000 + (pddun[4].num - 1) * 1000 + (pddun[3].num - 1) * 100 + (pddun[2].num - 1) * 10 + pddun[1].num - 1)) * 1.0
     return k
 
 def dfs_1(d, index_1): #/ * 枚举组合 * /
@@ -471,7 +472,7 @@ def dfs_1(d, index_1): #/ * 枚举组合 * /
         s1[i] = 1
         temp_1[index_1] = poker_1[i]
         if index_1 == 5 :
-            if pddi()>=30.0:
+            if pddi()>=2.0:
                 init_1()
                 dfs_2(1, 1)
         else:
@@ -549,14 +550,11 @@ def opengame():
     url = "https://api.shisanshui.rtxux.xyz/game/open"
     headers = {"X-Auth-Token": token}
     response = requests.post(url, headers=headers)
-    try:
-        message=response.json()
-        id=message["data"]["id"]
-        card=message["data"]["card"]
-        print(response.text)
-        return card
-    except:
-        time().sleep(5)
+    message=response.json()
+    id=message["data"]["id"]
+    card=message["data"]["card"]
+    print(response.text)
+    return card
 
 def submitgame(submit_ans):
     global token, id
@@ -590,14 +588,11 @@ def login(usename,password):
     payload = "{\"username\":"+"\""+usename+"\""+","+"\"password\":"+"\""+password+"\""+"}"
     headers = {'content-type': 'application/json'}
     response = requests.post(url, data=payload, headers=headers)
-    try:
-        message = response.json()  # 登录
-        token = message["data"]["token"]
-        use=message["data"]["user_id"]
-        print (response.text)
-        return message
-    except :
-        time().sleep(5)
+    message = response.json()  # 登录
+    token = message["data"]["token"]
+    use=message["data"]["user_id"]
+    print (response.text)
+    return message
 #139 dzy001 dzy001
 #143 dzy002 dzy002
 
